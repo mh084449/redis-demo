@@ -52,7 +52,6 @@ def promote_user_with_lock():
     if try_acquire_lock():
         # Check if there is space for more promotions
         if get_promotion_count() < MAX_PROMOTIONS:
-            time.sleep(1)
             increment_promotion_count()
             st.success("Congratulations! You have been promoted to SDE 2!")
         else:
@@ -64,6 +63,7 @@ def promote_user_with_lock():
 def promote_user_without_lock():
     """Promote a user without using a lock (simulating race conditions)"""
     if get_promotion_count() < MAX_PROMOTIONS:
+        time.sleep(10)
         increment_promotion_count()
         st.success("Congratulations! You have been promoted to SDE 2!")
     else:
