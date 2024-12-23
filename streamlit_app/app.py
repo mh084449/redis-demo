@@ -3,12 +3,13 @@ from caching import show_caching_page
 from publisher import show_publisher_page
 from subscriber import show_subscriber_page
 from lock import show_promotion_page
+from leaderboard import show_leaderboard_page
 
 
 def main():
     st.sidebar.title("Redis Live Demo")
     page = st.sidebar.radio(
-        "Choose a use case", ("Caching", "Publisher", "Subscriber", "Lock")
+        "Choose a use case", ("Caching", "Publisher", "Subscriber", "Lock", "Leaderboard")
     )
 
     if page == "Caching":
@@ -19,6 +20,8 @@ def main():
         show_subscriber_page()
     elif page == "Lock":
         show_promotion_page()
+    elif page == "Leaderboard":
+        show_leaderboard_page()
 
 
 if __name__ == "__main__":

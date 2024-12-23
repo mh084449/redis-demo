@@ -63,7 +63,7 @@ def promote_user_with_lock():
 def promote_user_without_lock():
     """Promote a user without using a lock (simulating race conditions)"""
     if get_promotion_count() < MAX_PROMOTIONS:
-        time.sleep(1)
+        time.sleep(0.5)
         increment_promotion_count()
         st.success("Congratulations! You have been promoted to SDE 2!")
     else:
