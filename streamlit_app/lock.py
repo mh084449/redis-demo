@@ -1,8 +1,20 @@
 import streamlit as st
 import redis
 
+# Access Redis credentials from the secrets file
+redis_host = st.secrets["redis"]["host"]
+redis_port = st.secrets["redis"]["port"]
+redis_username="default"
+redis_password = st.secrets["redis"]["password"]
+
 # Connect to Redis
-redis_client = redis.Redis(host="localhost", port=6379, decode_responses=True)
+redis_client = redis.Redis(
+    host=redis_host,
+    port=redis_port,
+    decode_responses=True,
+    username=redis_username,
+    password=redis_password,
+)
 
 # Max number of promotions
 MAX_PROMOTIONS = 5
