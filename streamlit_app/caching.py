@@ -5,7 +5,7 @@ import redis
 # Access Redis credentials from the secrets file
 redis_host = st.secrets["redis"]["host"]
 redis_port = st.secrets["redis"]["port"]
-redis_username="default"
+redis_username = st.secrets["redis"]["username"]
 redis_password = st.secrets["redis"]["password"]
 
 # Connect to Redis

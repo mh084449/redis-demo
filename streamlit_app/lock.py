@@ -1,10 +1,11 @@
 import streamlit as st
 import redis
+import time
 
 # Access Redis credentials from the secrets file
 redis_host = st.secrets["redis"]["host"]
 redis_port = st.secrets["redis"]["port"]
-redis_username="default"
+redis_username = st.secrets["redis"]["username"]
 redis_password = st.secrets["redis"]["password"]
 
 # Connect to Redis
@@ -51,6 +52,7 @@ def promote_user_with_lock():
     if try_acquire_lock():
         # Check if there is space for more promotions
         if get_promotion_count() < MAX_PROMOTIONS:
+            time.sleep(1)
             increment_promotion_count()
             st.success("Congratulations! You have been promoted to SDE 2!")
         else:
